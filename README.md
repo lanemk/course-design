@@ -1,2 +1,2 @@
-# bibliographica
-Graph-based catalog of media collection (i.e., CDs, books, video, etc.)
+# CourseDesign
+Ontology for general instructional design of course(s); course could be online, hybrid, or face-to-face.
