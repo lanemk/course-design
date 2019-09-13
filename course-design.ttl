@@ -1,0 +1,177 @@
+# baseURI: http://www.connaissance.io/onto/cd/CourseDesign
+# imports: http://purl.org/dc/terms/
+# imports: http://topbraid.org/schema/
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix : <http://www.connaissance.io/onto/cd/CourseDesign#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema:Course
+  rdf:type owl:Class ;
+  schema:provider schema:CollegeOrUniversity ;
+  rdfs:comment "A description of an educational course which may be offered as distinct instances at which take place at different times or take place at different locations, or be offered through different media or modes of study. An educational course is a sequence of one or more educational events and/or creative works which aims to build knowledge, competence or ability of learners." ;
+  rdfs:label "Course" ;
+  rdfs:subClassOf schema:CreativeWork ;
+  rdfs:subClassOf schema:EducationEvent ;
+  skos:prefLabel "Course" ;
+.
+<http://www.connaissance.io/onto/cd/CourseDesign>
+  rdf:type owl:Ontology ;
+  dcterms:modified "2019-09-13" ;
+  rdfs:comment "Ontology for general instructional design of course(s); could be online, hybrid, or face-to-face." ;
+  owl:imports dcterms: ;
+  owl:imports <http://topbraid.org/schema/> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:versionInfo "Created by M Lane, Portland, Oregon" ;
+.
+:Course_Assignments
+  rdf:type owl:Class ;
+  rdfs:comment "Specific due dates for all assignments in the course." ;
+  rdfs:label "Assignment & Due Dates" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Assignment & Due Dates" ;
+.
+:Course_Description
+  rdf:type owl:Class ;
+  rdfs:comment "A narrative describing the course; i.e., purpose, goals, general prerequisites." ;
+  rdfs:label "Course Description" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Description" ;
+.
+:Course_Expectations
+  rdf:type owl:Class ;
+  rdfs:comment "A narrative asserting instructor expectations and requirements for the course." ;
+  rdfs:label "Course Expectations & Requirements" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Expectations & Requirements" ;
+.
+:Course_Format
+  rdf:type owl:Class ;
+  rdfs:comment "Delivery format specified for the course." ;
+  rdfs:label "Course Format" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Format" ;
+.
+:Course_Grading
+  rdf:type owl:Class ;
+  rdfs:comment "Grading methods and success criteria specified for the course." ;
+  rdfs:label "Course Description" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Description" ;
+.
+:Course_Objectives
+  rdf:type owl:Class ;
+  rdfs:comment "The set of measurable learning objectives for the course or learning module." ;
+  rdfs:label "Course Learning Objectives" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Learning Objectives" ;
+.
+:Course_Prerequisites
+  rdf:type owl:Class ;
+  rdfs:comment "Specific knowledge, skills, and possible courses required in advance of course." ;
+  rdfs:label "Course Prerequisites" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Prerequisites" ;
+.
+:Course_Readings
+  rdf:type owl:Class ;
+  rdfs:comment "Reading assignments in the course." ;
+  rdfs:label "Course Readings & Topics" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Readings & Topics" ;
+.
+:Course_Schedule
+  rdf:type owl:Class ;
+  rdfs:comment "Specific schedule of learning topics, units, activities, assessments, and due dates." ;
+  rdfs:label "Course Schedule" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Schedule" ;
+.
+:Course_Technology
+  rdf:type owl:Class ;
+  rdfs:comment "Technology and software requirements for the course." ;
+  rdfs:label "Course Technology & Software Requirements" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Technology & Software Requirements" ;
+.
+:Instructor_Bio
+  rdf:type owl:Class ;
+  rdfs:comment "A narrative of the instructor's background as it relates to the course." ;
+  rdfs:label "Instructor Bio" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Instructor Bio" ;
+.
+:Learning_Module
+  rdf:type owl:Class ;
+  rdfs:comment "All inclusive learning module for the course." ;
+  rdfs:label "Learning Module" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Learning Module" ;
+.
+:Module_Assignment
+  rdf:type owl:Class ;
+  rdfs:comment "Graded assignment instructions for the module." ;
+  rdfs:label "Module Assignment" ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:subClassOf :Learning_Module ;
+  skos:prefLabel "Module Assignment" ;
+.
+:Module_Description
+  rdf:type owl:Class ;
+  rdfs:comment "A narrative describing the learning module; i.e., purpose, goals, general prerequisites." ;
+  rdfs:label "Module Description" ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:subClassOf :Learning_Module ;
+  skos:prefLabel "Module Description" ;
+.
+:Module_Discussion
+  rdf:type owl:Class ;
+  rdfs:comment "Discussion questions for the module." ;
+  rdfs:label "Module Discussion Questions" ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:subClassOf :Learning_Module ;
+  skos:prefLabel "Module Discussion Questions" ;
+.
+:Module_Lecture
+  rdf:type owl:Class ;
+  rdfs:comment "Module lecture materials in multimedia format, including plain old text." ;
+  rdfs:label "Module Lecture" ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:subClassOf :Learning_Module ;
+  skos:prefLabel "Module Lecture" ;
+.
+:Module_Objectives
+  rdf:type owl:Class ;
+  rdfs:comment "The set of measurable learning objectives for the learning module." ;
+  rdfs:label "Module Learning Objectives" ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:subClassOf :Learning_Module ;
+  skos:prefLabel "Module Learning Objectives" ;
+.
+:Module_Readings
+  rdf:type owl:Class ;
+  rdfs:comment "Reading and media assignments for the module." ;
+  rdfs:label "Module Readings & Media" ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:subClassOf :Learning_Module ;
+  skos:prefLabel "Module Readings & Media" ;
+.

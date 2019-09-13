@@ -1,0 +1,21 @@
+# baseURI: http://www.connaissance.io/onto/cd/lod-course
+# imports: http://www.connaissance.io/onto/cd/CourseDesign
+
+@prefix : <http://www.connaissance.io/onto/cd/lod-course#> .
+@prefix cd: <http://www.connaissance.io/onto/cd/CourseDesign#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.connaissance.io/onto/cd/lod-course>
+  rdf:type schema:Course ;
+  rdf:type owl:Ontology ;
+  dcterms:modified "2019-09-13" ;
+  rdfs:comment "Framework and instance data for linked open data course using CourseDesign ontology." ;
+  owl:imports <http://www.connaissance.io/onto/cd/CourseDesign> ;
+  owl:versionInfo "Created by M Lane, Portland, Oregon" ;
+.
