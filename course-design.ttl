@@ -47,6 +47,14 @@ schema:Course
   rdfs:subClassOf schema:Intangible ;
   skos:prefLabel "Course Description" ;
 .
+:Course_Evaluation
+  rdf:type owl:Class ;
+  rdfs:comment "The official quality assurance evaluation for the course." ;
+  rdfs:label "Course Evaluation" ;
+  rdfs:subClassOf schema:Course ;
+  rdfs:subClassOf schema:Intangible ;
+  skos:prefLabel "Course Evaluation" ;
+.
 :Course_Expectations
   rdf:type owl:Class ;
   rdfs:comment "A narrative asserting instructor expectations and requirements for the course." ;
