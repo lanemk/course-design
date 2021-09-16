@@ -1,11 +1,11 @@
 # baseURI: http://www.connaissance.io/onto/cd/CourseDesign
-# imports: http://purl.org/dc/terms/
+# imports: http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#
 # imports: http://topbraid.org/schema/
-# imports: http://www.w3.org/2004/02/skos/core
 
 @prefix : <http://www.connaissance.io/onto/cd/CourseDesign#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lom_ontology_ods: <http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -20,16 +20,14 @@ schema:Course
   rdfs:label "Course" ;
   rdfs:subClassOf schema:CreativeWork ;
   rdfs:subClassOf schema:EducationEvent ;
-  skos:prefLabel "Course" ;
 .
 <http://www.connaissance.io/onto/cd/CourseDesign>
   rdf:type owl:Ontology ;
-  dcterms:modified "2019-09-13" ;
-  rdfs:comment "Ontology for general instructional design of course(s); could be online, hybrid, or face-to-face." ;
-  owl:imports dcterms: ;
+  dcterms:creator :M_Lane ;
+  dcterms:modified "2021-09-12" ;
+  rdfs:comment "Ontology for structured instructional design; imports IEEE LOM." ;
+  owl:imports lom_ontology_ods: ;
   owl:imports <http://topbraid.org/schema/> ;
-  owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:versionInfo "Created by M Lane, Portland, Oregon" ;
 .
 :Course_Assignments
   rdf:type owl:Class ;
@@ -37,7 +35,6 @@ schema:Course
   rdfs:label "Assignment & Due Dates" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Assignment & Due Dates" ;
 .
 :Course_Description
   rdf:type owl:Class ;
@@ -45,7 +42,6 @@ schema:Course
   rdfs:label "Course Description" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Description" ;
 .
 :Course_Evaluation
   rdf:type owl:Class ;
@@ -53,7 +49,6 @@ schema:Course
   rdfs:label "Course Evaluation" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Evaluation" ;
 .
 :Course_Expectations
   rdf:type owl:Class ;
@@ -61,7 +56,6 @@ schema:Course
   rdfs:label "Course Expectations & Requirements" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Expectations & Requirements" ;
 .
 :Course_Format
   rdf:type owl:Class ;
@@ -69,7 +63,6 @@ schema:Course
   rdfs:label "Course Format" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Format" ;
 .
 :Course_Grading
   rdf:type owl:Class ;
@@ -77,7 +70,6 @@ schema:Course
   rdfs:label "Course Description" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Description" ;
 .
 :Course_Objectives
   rdf:type owl:Class ;
@@ -85,7 +77,6 @@ schema:Course
   rdfs:label "Course Learning Objectives" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Learning Objectives" ;
 .
 :Course_Prerequisites
   rdf:type owl:Class ;
@@ -93,7 +84,6 @@ schema:Course
   rdfs:label "Course Prerequisites" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Prerequisites" ;
 .
 :Course_Readings
   rdf:type owl:Class ;
@@ -101,7 +91,6 @@ schema:Course
   rdfs:label "Course Readings & Topics" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Readings & Topics" ;
 .
 :Course_Schedule
   rdf:type owl:Class ;
@@ -109,7 +98,6 @@ schema:Course
   rdfs:label "Course Schedule" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Schedule" ;
 .
 :Course_Technology
   rdf:type owl:Class ;
@@ -117,7 +105,6 @@ schema:Course
   rdfs:label "Course Technology & Software Requirements" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Course Technology & Software Requirements" ;
 .
 :Instructor_Bio
   rdf:type owl:Class ;
@@ -125,7 +112,6 @@ schema:Course
   rdfs:label "Instructor Bio" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Instructor Bio" ;
 .
 :Learning_Module
   rdf:type owl:Class ;
@@ -133,7 +119,17 @@ schema:Course
   rdfs:label "Learning Module" ;
   rdfs:subClassOf schema:Course ;
   rdfs:subClassOf schema:Intangible ;
-  skos:prefLabel "Learning Module" ;
+.
+:M_Lane
+  rdf:type schema:Person ;
+  rdfs:label "M Laner" ;
+.
+:Module_Assessment
+  rdf:type owl:Class ;
+  rdfs:comment "Graded assessment for the module." ;
+  rdfs:label "Module Assessment" ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:subClassOf :Learning_Module ;
 .
 :Module_Assignment
   rdf:type owl:Class ;
@@ -141,7 +137,6 @@ schema:Course
   rdfs:label "Module Assignment" ;
   rdfs:subClassOf schema:Intangible ;
   rdfs:subClassOf :Learning_Module ;
-  skos:prefLabel "Module Assignment" ;
 .
 :Module_Description
   rdf:type owl:Class ;
@@ -149,7 +144,6 @@ schema:Course
   rdfs:label "Module Description" ;
   rdfs:subClassOf schema:Intangible ;
   rdfs:subClassOf :Learning_Module ;
-  skos:prefLabel "Module Description" ;
 .
 :Module_Discussion
   rdf:type owl:Class ;
@@ -157,7 +151,6 @@ schema:Course
   rdfs:label "Module Discussion Questions" ;
   rdfs:subClassOf schema:Intangible ;
   rdfs:subClassOf :Learning_Module ;
-  skos:prefLabel "Module Discussion Questions" ;
 .
 :Module_Lecture
   rdf:type owl:Class ;
@@ -165,7 +158,6 @@ schema:Course
   rdfs:label "Module Lecture" ;
   rdfs:subClassOf schema:Intangible ;
   rdfs:subClassOf :Learning_Module ;
-  skos:prefLabel "Module Lecture" ;
 .
 :Module_Objectives
   rdf:type owl:Class ;
@@ -173,7 +165,6 @@ schema:Course
   rdfs:label "Module Learning Objectives" ;
   rdfs:subClassOf schema:Intangible ;
   rdfs:subClassOf :Learning_Module ;
-  skos:prefLabel "Module Learning Objectives" ;
 .
 :Module_Readings
   rdf:type owl:Class ;
@@ -181,5 +172,4 @@ schema:Course
   rdfs:label "Module Readings & Media" ;
   rdfs:subClassOf schema:Intangible ;
   rdfs:subClassOf :Learning_Module ;
-  skos:prefLabel "Module Readings & Media" ;
 .

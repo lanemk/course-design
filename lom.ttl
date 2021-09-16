@@ -1,1128 +1,1343 @@
-@prefix :      <http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#> .
-@prefix cc:    <http://creativecommons.org/ns#> .
-@prefix ns:    <http://www.w3.org/2006/vcard/ns#> .
-@prefix terms: <http://purl.org/dc/terms/> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+# baseURI: http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#
+# prefix: lom2owl
+
+@prefix : <http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix lom2owl: <http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#> .
+@prefix ns: <http://www.w3.org/2006/vcard/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-lom2owl:educationalDifficulty
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "How hard it is to work with or through this learning object for the typical intended target audience. IEEE LOM element 5.8"@en ;
-        rdfs:domain   lom2owl:Educational ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "difficult"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "easy"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "medium"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "very difficult"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "very easy"^^xsd:string ;
-                                                                                         rdf:rest   ()
-                                                                                       
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:orCompositeName
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Name of the required technology to use a learning object. IEEE LOM element 4.4.1.2."@en ;
-        rdfs:domain   lom2owl:SingleTechnicalRequirement ;
-        rdfs:range    xsd:string .
-
-lom2owl:taxonId  a    owl:DatatypeProperty ;
-        rdfs:comment  "The identifier of the taxon, such as a number or letter combination provided by the source of the taxonomy. IEEE LOM element 9.2.2.1."@en ;
-        rdfs:domain   lom2owl:Taxon ;
-        rdfs:range    xsd:string .
-
-lom2owl:annotationEntity
-        a                       owl:Thing , owl:DatatypeProperty , owl:ObjectProperty ;
-        rdfs:comment            "Entity (i.e., people, organization) that created this annotation. IEEE LOM element 8.1."@en ;
-        owl:dataPropertyDomain  lom2owl:Annotation ;
-        owl:dataPropertyRange   xsd:string .
-
-dc:publisher  a  owl:AnnotationProperty .
-
-lom2owl:educationalTypicalAgeRange
-        a             owl:ObjectProperty ;
-        rdf:value     ""^^rdfs:Literal ;
-        rdfs:comment  "Age of the typical intended user. IEEE LOM element 5.7."^^xsd:string ;
-        rdfs:domain   lom2owl:Educational .
-
-lom2owl:educationalSemanticDensity
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The degree of conciseness of a learning object. The semantic density of a learning object may be estimated in terms of its size, span, or --in the case of self-timed resources such as audio or video-- duration. IEEE LOM element 5.4."^^xsd:string ;
-        rdfs:domain   lom2owl:Educational ;
-        rdfs:range    xsd:string ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "high"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "low"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "medium"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "very high"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "very low"^^xsd:string ;
-                                                                                         rdf:rest   ()
-                                                                                       
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "higherEducation"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "other"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "school"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "training"^^xsd:string ;
-                                                                            rdf:rest   ()
-                                                                          
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:durationValue
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:Duration ;
-        rdfs:range   rdfs:Literal .
-
-lom2owl:metaMetadataLanguage
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Language of this metadata instance. This is the default language for all LangString values in this metadata instance. If a value for this data element is not present in a metadata instance, then there is no default language for LangString values. IEEE LOM element 3.4."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "ba"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "ca"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "es"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "ga"^^xsd:string ;
-                                                                            rdf:rest   ()
-                                                                          
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:identifier  a  owl:InverseFunctionalProperty , owl:ObjectProperty ;
-        rdfs:comment  "This predicate represents the fact that a learning object has a label that identifies it. IEEE LOM element 1.1."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    lom2owl:Identifier .
-
-lom2owl:educationalLanguage
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The primary human language or languages used within this learning object to communicate to the intended user. If the learning object had no lingual content (as in the case of a picture of the Mona Lisa, for example), then the appropriate value for this data element would be \"none\". IEEE LOM element 1.3."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "ba"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "ca"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "es"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "ga"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "none"^^xsd:string ;
-                                                                                         rdf:rest   ()
-                                                                                       
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:copyrightDescription
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:LearningObject ;
-        rdfs:range   rdfs:Literal .
-
-lom2owl:taxonpathSource
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:TaxonPath ;
-        rdfs:range   rdfs:Literal .
-
-lom2owl:Duration  a      owl:Class ;
-        rdfs:comment     "An interval in time with accuracy at least as small as one second."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onDataRange           rdf:XMLLiteral ;
-                           owl:onProperty            lom2owl:durationValue ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onDataRange           rdf:XMLLiteral ;
-                           owl:onProperty            lom2owl:durationDescription ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] .
-
-lom2owl:SingleTechnicalRequirement
-        a                owl:Class ;
-        rdfs:comment     "A technical capability necessary for using a learning object."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:orCompositeName
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:orCompositeMaximumVersion
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:orCompositeType
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:orCompositeMinimumVersion
-                         ] .
-
-lom2owl:classification
-        a             owl:ObjectProperty ;
-        rdfs:comment  "Description of where a learning object falls within a particular classification system. IEEE LOM element 9."@en ;
-        rdfs:range    lom2owl:Classification .
-
-lom2owl:lifeCycleContribution
-        a       owl:ObjectProperty .
-
-lom2owl:lifeCycleStatus
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The completion status or condition of this learning object. IEEE LOM element 2.2"^^xsd:string ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "draft"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "final"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "revised"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "unavalaible"^^xsd:string ;
-                                                                            rdf:rest   ()
-                                                                          
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:educationalTypicalLearningTime
-        a            owl:ObjectProperty ;
-        rdfs:domain  lom2owl:Educational ;
-        rdfs:range   lom2owl:Duration .
-
-lom2owl:metaMetadataContribution
-        a             owl:ObjectProperty ;
-        rdfs:comment  "Those entities (i.e., people, organizations) that have contributed to the state of this learning object during its life cycle (e.g.,creation, edits, publication)."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    lom2owl:LifeCycleContribution .
-
-lom2owl:contributionDateTime
-        a             owl:ObjectProperty ;
-        rdfs:comment  "The date of the contribution. IEEE LOM element 3.2.3."@en ;
-        rdfs:domain   lom2owl:Contribution ;
-        rdfs:range    lom2owl:DateTime .
-
-lom2owl:LearningObject
-        a                owl:Class ;
-        rdfs:comment     "Learning Object" ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:lifeCycleVersion ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "30"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LifeCycleContribution ;
-                           owl:onProperty               lom2owl:lifeCycleContribution
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:aggregationLevel
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "30"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Annotation ;
-                           owl:onProperty               lom2owl:annotation
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Identifier ;
-                           owl:onProperty               lom2owl:metaMetadataIdentifier
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:otherPlatformRequirements ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Identifier ;
-                           owl:onProperty               lom2owl:identifier
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:technicalSize
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LangString ;
-                           owl:onProperty               lom2owl:description
-                         ] ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onDataRange           xsd:boolean ;
-                           owl:onProperty            lom2owl:cost ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onClass               lom2owl:Duration ;
-                           owl:onProperty            lom2owl:technicalDuration ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onDataRange           xsd:boolean ;
-                           owl:onProperty            lom2owl:copyrightAndOtherRestrictions ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LangString ;
-                           owl:onProperty               lom2owl:keyword
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:MetaMetadataContribution ;
-                           owl:onProperty               lom2owl:metaMetadataContribution
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:structure
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:metadataSchema
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "100"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Relation ;
-                           owl:onProperty               lom2owl:relation
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:metaMetadataLanguage
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:technicalInstallationRemarks ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LangString ;
-                           owl:onProperty               lom2owl:coverage
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "40"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:TechnicalRequirement ;
-                           owl:onProperty               lom2owl:technicalRequirements
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:lifeCycleStatus
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "40"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Classification ;
-                           owl:onProperty               lom2owl:classification
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:technicalLocation
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "100"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Educational ;
-                           owl:onProperty               lom2owl:educational
-                         ] ;
-        terms:format     ""^^rdfs:Literal ;
-        terms:language   ""^^rdfs:Literal ;
-        terms:publisher  ""^^rdfs:Literal ;
-        terms:rights     ""^^rdfs:Literal .
-
-lom2owl:relatedResourceDescription
-        a                  owl:ObjectProperty ;
-        rdfs:domain        lom2owl:Relation ;
-        rdfs:range         lom2owl:LangString ;
-        terms:description  ""^^rdfs:Literal .
-
-lom2owl:metadataSchema
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The name and version of the authoritative specification used to create this metadata instance. IEEE LOM element 3.3."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    xsd:string .
-
-lom2owl:email  a      owl:DatatypeProperty ;
-        rdfs:comment  "Email as it appears in the vCard"^^xsd:string ;
-        rdfs:domain   lom2owl:VCard ;
-        rdfs:range    xsd:string .
-
-lom2owl:durationDescription
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:Duration ;
-        rdfs:range   rdfs:Literal .
-
-lom2owl:metaMetadataIdentifier
-        a             owl:ObjectProperty ;
-        rdfs:comment  "A globally unique label that identifies this metadata record. IEEE LOM element 3.1."^^xsd:string ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    lom2owl:Identifier .
-
-terms:coverage  a  owl:AnnotationProperty .
-
-lom2owl:TechnicalRequirement
-        a                owl:Class ;
-        rdfs:comment     "The technical capabilities necessary for using a learning object. There can be multiple requirements, in which case all are required, i.e., the logical connector is AND."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "40"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:SingleTechnicalRequirement ;
-                           owl:onProperty               lom2owl:isCompositeOf
-                         ] .
-
-lom2owl:annotationDescription
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:Annotation ;
-        rdfs:range   rdfs:Literal .
-
-terms:identifier  a  owl:AnnotationProperty .
-
-lom2owl:technicalDuration
-        a            owl:ObjectProperty ;
-        rdfs:domain  lom2owl:Duration ;
-        rdfs:range   lom2owl:LearningObject .
-
-ns:ORG  a       owl:AnnotationProperty .
-
-lom2owl:cost  a       owl:DatatypeProperty ;
-        rdfs:comment  "Whether use of the learning object requires payment. IEEE LOM element 6.1."@en ;
-        rdfs:range    xsd:boolean .
-
-lom2owl:description  a     owl:ObjectProperty ;
-        rdfs:comment       "A textual description of the content of this learning object. IEEE LOM element 1.4."@en , "Comments on how this learning object is to be used. IEEE LOM element 5.10"^^xsd:string ;
-        rdfs:domain        lom2owl:LearningObject ;
-        terms:description  ""^^rdfs:Literal .
-
-lom2owl:contributionEntity
-        a             owl:ObjectProperty ;
-        rdfs:comment  "The identification of and information about entities (i.e., people, organizations) contributing to this learning object. The entities shall be ordered as most relevant first. IEEE LOM element 3.2.2."^^xsd:string ;
-        rdfs:domain   lom2owl:Contribution ;
-        rdfs:range    lom2owl:VCard .
-
-lom2owl:educationalContext
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The principal environment within which the learning and use of this learning object is intended to take place. IEEE LOM element 5.6."@en ;
-        rdfs:domain   lom2owl:Educational ;
-        rdfs:range    xsd:short , rdfs:Literal ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "higher education"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "other"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "school"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "training"^^xsd:string ;
-                                                                            rdf:rest   ()
-                                                                          
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:Contribution  a  owl:Class ;
-        rdfs:comment     "Those entities (i.e., people, organizations) that have contributed to the state of this learning object during its life cycle (e.g., creation, edits, publication)."^^xsd:string ;
-        rdfs:subClassOf  owl:Thing .
-
-lom2owl:annotationDate
-        a             owl:ObjectProperty ;
-        rdfs:comment  "Date that this annotation was created. IEEE LOM element 8.2."@en ;
-        rdfs:domain   lom2owl:Annotation ;
-        rdfs:range    lom2owl:DateTime .
-
-terms:format  a  owl:AnnotationProperty .
-
-lom2owl:Annotation  a    owl:Class ;
-        rdfs:comment     "Comments on the educational use of a learning object, including information on when and by whom the comments were created."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:dateTimeValue
-                         ] ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onClass               lom2owl:VCard ;
-                           owl:onProperty            lom2owl:annotationEntity ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:annotationDescription ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:dateTimeDescription
-                         ] .
-
-lom2owl:aggregationLevel
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The functional granularity of this learning object. IEEE LOM element 1.8."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "1"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "2"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "3"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "4"^^xsd:string ;
-                                                                            rdf:rest   ()
-                                                                          
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:identifierEntry
-        a             owl:FunctionalProperty , owl:DatatypeProperty ;
-        rdfs:comment  "This predicate relates a lomIdentifier to the value of the identifier within the identification or cataloging scheme that designates or identifies a learning object or a learning object metadata record (a namespace specific string).  IEEE LOM element 1.1, 3.1, 7.2.1."@en ;
-        rdfs:domain   lom2owl:Identifier ;
-        rdfs:range    xsd:string .
-
-terms:language  a  owl:AnnotationProperty .
-
-lom2owl:LifeCycleContribution
-        a                owl:Class ;
-        rdfs:subClassOf  lom2owl:Contribution ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:dateTimeDescription
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:lifeCycleContributionRole
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:dateTimeValue
-                         ] .
-
-lom2owl:orCompositeMaximumVersion
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Highest possible version of the required technology to use the learning object. IEEE LOM element 4.4.1.4."@en ;
-        rdfs:domain   lom2owl:SingleTechnicalRequirement ;
-        rdfs:range    xsd:string .
-
-lom2owl:taxonPath  a  owl:ObjectProperty ;
-        rdfs:comment  "A taxonomic path in a specific classification system according to which a learning object is classified. IEEE LOM element 9.2."@en ;
-        rdfs:domain   lom2owl:Classification ;
-        rdfs:range    lom2owl:TaxonPath .
-
-lom2owl:  a              owl:Ontology ;
-        rdfs:comment     "-Version 1.0: covers a complete mapping of IEEE LOM to Linked Open Data"@en ;
-        cc:license       <http://creativecommons.org/licenses/by/3.0/> ;
-        dc:creator       "\n\t\t\tEnayat Rajabi (enayat.rajabi@uah.es)\n\t\t" ;
-        dc:description   "An ontology and vocabulary used for exposing IEEE LOM, a metadata standard for educational contents, as Linked Data. \n\t\tIt is intended as a bridge for linkage of educational metadata into Linked Open Data (LOD). \n\t\tIn this ontology, we designed a mapping of IEEE LOM elements to RDF based on Linked Data principles. "@en ;
-        dc:issued        "2014-05-20"^^xsd:date ;
-        dc:modified      "2015-03-30"^^xsd:date ;
-        dc:publisher     "\nUniversity of Alcala (www.uah.es) " ;
-        dc:rights        "Copyright Â© 2015 University of Alcala, Information Engineering (IE) research unit (http://www.ieru.org/) " ;
-        dc:title         "A vocabulary for exposing IEEE LOM metadata as Linked Open Data"@en ;
-        owl:versionInfo  1.0 .
-
-lom2owl:classificationTaxon
-        a             owl:ObjectProperty ;
-        rdfs:comment  "A particular term within a taxonomy which serves to classify a learning object. IEEE LOM element 9.2.2."@en ;
-        rdfs:domain   lom2owl:TaxonPath ;
-        rdfs:range    lom2owl:Taxon .
-
-lom2owl:classificationDescription
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:Classification ;
-        rdfs:range   rdfs:Literal .
-
-lom2owl:hasTechnicalFormat
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Technical datatype(s) of (all the components of) this learning object. This information is used to identify the software needed to access the learning object. IEEE LOM element 4.1."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    xsd:string .
-
-lom2owl:technicalRequirements
-        a             owl:ObjectProperty ;
-        rdfs:comment  "A technical capability necessary for using a learning object. IEEE LOM Element \"4.4. Requirement\"."@en ;
-        rdfs:range    lom2owl:TechnicalRequirement .
-
+lom2owl:
+  rdf:type owl:Ontology ;
+  cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+  dc:creator "Enayat Rajabi (enayat.rajabi@uah.es)" ;
+  dc:description """An ontology and vocabulary used for exposing IEEE LOM, a metadata standard for educational contents, as Linked Data. 
+		It is intended as a bridge for linkage of educational metadata into Linked Open Data (LOD). 
+		In this ontology, we designed a mapping of IEEE LOM elements to RDF based on Linked Data principles. """@en ;
+  dc:issued "2014-05-20"^^xsd:date ;
+  dc:modified "2015-03-30"^^xsd:date ;
+  dc:publisher "University of Alcala (www.uah.es) " ;
+  dc:rights "Copyright Â© 2015 University of Alcala, Information Engineering (IE) research unit (http://www.ieru.org/) " ;
+  dc:title "A vocabulary for exposing IEEE LOM metadata as Linked Open Data"@en ;
+  rdfs:comment "-Version 1.0: covers a complete mapping of IEEE LOM to Linked Open Data"@en ;
+  owl:versionInfo 1.0 ;
+.
+lom2owl:Annotation
+  rdf:type owl:Class ;
+  rdfs:comment "Comments on the educational use of a learning object, including information on when and by whom the comments were created."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:dateTimeDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:dateTimeValue ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass lom2owl:VCard ;
+      owl:onProperty lom2owl:annotationEntity ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:annotationDescription ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+.
 lom2owl:Classification
-        a                owl:Class ;
-        rdfs:comment     "Description of where a learning object falls within a particular classification system. To define multiple classifications, there may be multiple instances of this category for a learning object."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "40"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LangString ;
-                           owl:onProperty               lom2owl:classificationKeyword
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:classificationPurpose
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:classificationDescription ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "15"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:TaxonPath ;
-                           owl:onProperty               lom2owl:taxonPath
-                         ] .
-
-lom2owl:classificationKeyword
-        a             owl:ObjectProperty ;
-        rdfs:comment  "Keywords and phrases descriptive of the learning object relative to the stated 9.1:Classification.Purpose of this specific classification, such as accessibility, security level, etc., most relevant first. IEEE LOM element 9.4"^^xsd:string ;
-        rdfs:domain   lom2owl:Classification .
-
-lom2owl:educationalInteractivityLevel
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The degree of interactivity characterizing this learning object. Interactivity in this context refers to the degree to which the learner can influence the aspect or behavior of the learning object. IEEE LOM element 5.3."^^xsd:string ;
-        rdfs:domain   lom2owl:Educational ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "high"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "low"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "medium"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "very high"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "very low"^^xsd:string ;
-                                                                                         rdf:rest   ()
-                                                                                       
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:Identifier  a     owl:Class ;
-        rdfs:comment      "A globally unique label that identifies either a learning object or a learning object metadata record."@en ;
-        rdfs:subClassOf   owl:Thing ;
-        rdfs:subClassOf   [ a                owl:Restriction ;
-                            owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                            owl:onProperty   lom2owl:identifierCatalog
-                          ] ;
-        terms:identifier  ""^^rdfs:Literal .
-
-lom2owl:technicalSize
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The size of the digital learning object in bytes (not Mbytes, GB, etc.). The size is represented as a decimal value. This data element shall refer to the actual size of this learning object. If the learning object is compressed, then this data element shall refer to the uncompressed size. IEEE LOM element 4.2."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    xsd:string .
-
-lom2owl:annotation  a  owl:ObjectProperty ;
-        rdfs:comment  "Comments on the educational use of a learning object, containing information on when and by whom the comments were created. This category enables educators to share their assessments of learning objects, suggestions for use, etc. IEEE LOM element 8."@en ;
-        rdfs:range    lom2owl:Annotation .
-
-lom2owl:lifeCycleVersion
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:LearningObject ;
-        rdfs:range   rdfs:Literal .
-
-lom2owl:Relation  a      owl:Class ;
-        rdfs:comment     "A concept which defines the relationship between a learning object and other learning objects, if any."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Identifier ;
-                           owl:onProperty               lom2owl:identifier
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LangString ;
-                           owl:onProperty               lom2owl:relatedResourceDescription
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:relationKind
-                         ] .
-
-lom2owl:orCompositeMinimumVersion
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Lowest possible version of the required technology to use the learning object. IEEE LOM element 4.4.1.3."@en ;
-        rdfs:domain   lom2owl:SingleTechnicalRequirement ;
-        rdfs:range    xsd:string .
-
-terms:title  a  owl:AnnotationProperty .
-
-lom2owl:lifeCycleContributionRole
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Kind of contribution. IEEE LOM element 2.3.1."@en ;
-        rdfs:domain   lom2owl:LifeCycleContribution ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "author"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "content provider"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "editor"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "educational validator"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "graphical designer"^^xsd:string ;
-                                                                                         rdf:rest   [ a          rdf:List ;
-                                                                                                      rdf:first  "initiator"^^xsd:string ;
-                                                                                                      rdf:rest   [ a          rdf:List ;
-                                                                                                                   rdf:first  "instructional designer"^^xsd:string ;
-                                                                                                                   rdf:rest   [ a          rdf:List ;
-                                                                                                                                rdf:first  "publisher"^^xsd:string ;
-                                                                                                                                rdf:rest   [ a          rdf:List ;
-                                                                                                                                             rdf:first  "script writer"^^xsd:string ;
-                                                                                                                                             rdf:rest   [ a          rdf:List ;
-                                                                                                                                                          rdf:first  "subject matter expert"^^xsd:string ;
-                                                                                                                                                          rdf:rest   [ a          rdf:List ;
-                                                                                                                                                                       rdf:first  "technical implementer"^^xsd:string ;
-                                                                                                                                                                       rdf:rest   [ a          rdf:List ;
-                                                                                                                                                                                    rdf:first  "technical validator"^^xsd:string ;
-                                                                                                                                                                                    rdf:rest   [ a          rdf:List ;
-                                                                                                                                                                                                 rdf:first  "terminator"^^xsd:string ;
-                                                                                                                                                                                                 rdf:rest   [ a          rdf:List ;
-                                                                                                                                                                                                              rdf:first  "unknown"^^xsd:string ;
-                                                                                                                                                                                                              rdf:rest   [ a          rdf:List ;
-                                                                                                                                                                                                                           rdf:first  "validator"^^xsd:string ;
-                                                                                                                                                                                                                           rdf:rest   ()
-                                                                                                                                                                                                                         
-                                                                                                                                                                                                                         ]
-                                                                                                                                                                                                            ]
-                                                                                                                                                                                               ]
-                                                                                                                                                                                  ]
-                                                                                                                                                                     ]
-                                                                                                                                                        ]
-                                                                                                                                           ]
-                                                                                                                              ]
-                                                                                                                 ]
-                                                                                                    ]
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:copyrightAndOtherRestrictions
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Whether copyright or other restrictions apply to the use of this learning object. IEEE LOM element 6.2."@en ;
-        rdfs:range    xsd:boolean .
-
-lom2owl:metaMetadataContributionRole
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Kind of contribution. IEEE LOM element 3.2.1."^^xsd:string ;
-        rdfs:domain   lom2owl:MetaMetadataContribution ;
-        rdfs:range    xsd:string .
-
-terms:type  a   owl:AnnotationProperty .
-
-rdf:value  a    owl:AnnotationProperty .
-
-lom2owl:educationalInteractivityType
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Predominant mode of learning supported by this learning object. IEEE LOM element 5.1."@en ;
-        rdfs:domain   lom2owl:Educational ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "active"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "expositive"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "mised"^^xsd:string ;
-                                                               rdf:rest   ()
-                                                             
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:TaxonPath  a     owl:Class ;
-        rdfs:comment     "A taxonomic path in a specific classification system. Each succeeding level is a refinement in the definition of the preceding level. There may be different paths, in the same or different classifications, which describe the same characteristic."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:taxonpathSource ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "15"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:Taxon ;
-                           owl:onProperty               lom2owl:classificationTaxon
-                         ] .
-
-terms:rights  a  owl:AnnotationProperty .
-
-lom2owl:taxonEntry  a  owl:DatatypeProperty ;
-        rdfs:range  rdfs:Literal .
-
-lom2owl:hasValue  a   owl:DatatypeProperty ;
-        rdfs:comment  "This predicate relates a singleLangString to the character string containing its textual description."@en ;
-        rdfs:range    xsd:string .
-
-owl:Thing  a    owl:Class .
-
-lom2owl:educationalIntendedUserRole
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Principal user(s) for which this learning object was designed, most dominant first. IEEE LOM element 5.5."@en ;
-        rdfs:domain   lom2owl:Educational ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "author"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "learner"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "manager"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "teacher"^^xsd:string ;
-                                                                            rdf:rest   ()
-                                                                          
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:isCompositeOf
-        a             owl:ObjectProperty ;
-        rdfs:comment  "When grouping multiple requirements, the composite requirement is satisfied when one of the component requirements is satisfied, i.e., the logical connector is OR. IEEE LOM element 4.4.1."@en ;
-        rdfs:domain   lom2owl:TechnicalRequirement ;
-        rdfs:range    lom2owl:SingleTechnicalRequirement .
-
-lom2owl:technicalLocation
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "A string that is used to access this learning object. It may be a location  (e.g., Universal Resource Locator), or a method that resolves to a location (e.g., Universal Resource Identifier). The first element of this list shall be the preferable location. IEEE LOM element 4.3."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    xsd:string .
-
-ns:FN   a       owl:AnnotationProperty .
-
-lom2owl:VCard  a         owl:Class ;
-        rdfs:comment     "A vCard is a collection of one or more properties. A property is a uniquely named value. A set of properties can be grouped within a vCard. For example, the properties for a telephone number and comment can be grouped in order to preserve the coupling of the annotation with the telephone number. In addition to property groupings, a vC. versit  is developing a comprehensive family of PDI technologies based on open specifications and interoperability agreements to help meet this technology need."^^xsd:string ;
-        rdfs:subClassOf  owl:Thing ;
-        ns:FN            ""^^rdfs:Literal ;
-        ns:N             ""^^rdfs:Literal ;
-        ns:ORG           ""^^rdfs:Literal ;
-        ns:email         ""^^rdfs:Literal .
-
-lom2owl:hasResourceIdentifier
-        a             owl:ObjectProperty ;
-        rdfs:comment  "A globally unique label that identifies the target  learning object. IEEE LOM element 7.2.1."@en ;
-        rdfs:range    lom2owl:Identifier .
-
-ns:email  a     owl:AnnotationProperty .
-
-lom2owl:DateTime  a      owl:Class ;
-        rdfs:comment     "A point in time with accuracy at least as small as one second, as described by IEEE LOM in clause 8 (IEEE 1484.12.1-2002)."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onDataRange           xsd:dateTime ;
-                           owl:onProperty            lom2owl:dateTimeValue ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] .
-
-lom2owl:educational  a  owl:ObjectProperty ;
-        rdfs:comment  "This category describes the key educational or pedagogic characteristics of this learning object. IEEE LOM element 5."^^xsd:string ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    lom2owl:Educational .
-
-lom2owl:structure  a  owl:DatatypeProperty ;
-        rdfs:comment  "Underlying organizational structure of this learning object. IEEE LOM element 1.7."@en ;
-        rdfs:domain   lom2owl:LearningObject ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "atomic"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "collection"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "hierarchical"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "linear"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "networked"^^xsd:string ;
-                                                                                         rdf:rest   ()
-                                                                                       
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:includesSingleLangString
-        a             owl:ObjectProperty ;
-        rdfs:comment  "LangString values may include multiple semantically equivalent character strings, such as translations or alternative descriptions. Each of these is represented by a singleLangString."@en ;
-        rdfs:range    lom2owl:LangString .
-
-lom2owl:Taxon  a         owl:Class ;
-        rdfs:comment     "A particular term within a taxonomy. A taxon is a node that has a defined label or\nterm. A taxon may also have an alphanumeric designation or identifier for standardized reference. Either or both the label and the entry may be used to designate a particular taxon. An ordered list of taxons creates a taxonomic path, i.e., \"taxonomic stairway\": this is a path from a more general to more specific entry in a classification."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:taxonId
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:taxonEntry ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] .
-
-lom2owl:Educational  a   owl:Class ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:educationalLanguage
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:educationalContext
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LangString ;
-                           owl:onProperty               lom2owl:description
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:educationalSemanticDensity
-                         ] ;
-        rdfs:subClassOf  [ a                            owl:Restriction ;
-                           owl:maxQualifiedCardinality  "5"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  lom2owl:LangString ;
-                           owl:onProperty               lom2owl:educationalTypicalAgeRange
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:educationalDifficulty
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:educationalInteractivityType
-                         ] ;
-        rdfs:subClassOf  [ a                         owl:Restriction ;
-                           owl:onClass               lom2owl:Duration ;
-                           owl:onProperty            lom2owl:educationalTypicalLearningTime ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "10"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:educationalIntendedUserRole
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:educationalInteractivityLevel
-                         ] ;
-        terms:type       ""^^rdfs:Literal .
-
-terms:description  a  owl:AnnotationProperty .
-
-lom2owl:relation  a   owl:ObjectProperty ;
-        rdfs:comment  "Relationship between a learning object and other learning objects, if any."@en ;
-        rdfs:range    lom2owl:Relation .
-
-lom2owl:classificationPurpose
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The purpose of classifying a learning object. IEEE LOM element 9.1."@en ;
-        rdfs:domain   lom2owl:Classification ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "accessibility"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "competency"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "discipline"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "educational level"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "educational objective"^^xsd:string ;
-                                                                                         rdf:rest   [ a          rdf:List ;
-                                                                                                      rdf:first  "idea"^^xsd:string ;
-                                                                                                      rdf:rest   [ a          rdf:List ;
-                                                                                                                   rdf:first  "prerequisite"^^xsd:string ;
-                                                                                                                   rdf:rest   [ a          rdf:List ;
-                                                                                                                                rdf:first  "restrictions"^^xsd:string ;
-                                                                                                                                rdf:rest   [ a          rdf:List ;
-                                                                                                                                             rdf:first  "security level"^^xsd:string ;
-                                                                                                                                             rdf:rest   [ a          rdf:List ;
-                                                                                                                                                          rdf:first  "skill level"^^xsd:string ;
-                                                                                                                                                          rdf:rest   ()
-                                                                                                                                                        
-                                                                                                                                                        ]
-                                                                                                                                           ]
-                                                                                                                              ]
-                                                                                                                 ]
-                                                                                                    ]
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:technicalInstallationRemarks
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:LearningObject ;
-        rdfs:range   rdfs:Literal .
-
-lom2owl:duration  a  owl:ObjectProperty ;
-        rdfs:domain  lom2owl:Duration .
-
-lom2owl:LangString  a    owl:Class ;
-        rdfs:comment     "Each of the possible semantically equivalent character strings of a langString."@en ;
-        rdfs:subClassOf  owl:Thing ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:onProperty      lom2owl:hasValue ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] .
-
-ns:N    a       owl:AnnotationProperty .
-
-lom2owl:otherPlatformRequirements
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:LearningObject ;
-        rdfs:range   rdfs:Literal .
-
-terms:publisher  a  owl:AnnotationProperty .
-
-lom2owl:orCompositeType
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "The technology required to use this learning object, e.g., hardware, software, network, etc. IEEE LOM element 4.4.1.1."@en ;
-        rdfs:domain   lom2owl:SingleTechnicalRequirement ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "browser"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "operating system"^^xsd:string ;
-                                                  rdf:rest   ()
-                                                
-                                                ]
-                                   ]
-                      ] .
-
-lom2owl:dateTimeValue
-        a             owl:DatatypeProperty ;
-        rdfs:comment  "Date time value in format: YYYY[-MM[-DD[Thh[:mm[:ss[.s[TZD]]]]]]]"@en ;
-        rdfs:domain   lom2owl:DateTime ;
-        rdfs:range    xsd:dateTime .
-
-lom2owl:hasRelatedResource
-        a             owl:ObjectProperty ;
-        rdfs:comment  "The target learning object that a relationship references. IEEE LOM element 7.2."@en ;
-        rdfs:domain   lom2owl:Relation ;
-        rdfs:range    lom2owl:Identifier .
-
-lom2owl:keyword  a    owl:ObjectProperty ;
-        rdf:value     ""^^rdfs:Literal ;
-        rdfs:comment  "A keyword or phrase describing the topic of this learning object. This data element should not be used for characteristics that can be described by other data elements. IEEE LOM element 1.5."@en ;
-        rdfs:domain   lom2owl:LearningObject .
-
-lom2owl:coverage  a     owl:ObjectProperty ;
-        rdfs:comment    "The time, culture, geography or region to which this learning object applies.\nThe extent or scope of the content of the learning object. Coverage will typically include spatial location (a place name or geographic coordinates), temporal period (a period label, date, or date range) or jurisdiction (such as a named administrative entity). Recommended best practice is to select a value from a controlled vocabulary (for example, the Thesaurus of Geographic Names [TGN]) and that, where appropriate, named places or time periods be used in preference to numeric identifiers such as sets of coordinates or date ranges. IEEE LOM element 1.6."@en ;
-        rdfs:domain     lom2owl:LearningObject ;
-        terms:coverage  ""^^rdfs:Literal .
-
-lom2owl:relationKind  a  owl:DatatypeProperty ;
-        rdfs:comment  "Nature of the relationship between a learning object and the target learning object, identified by 7.2:Relation.Resource. IEEE LOM element 7.1."@en ;
-        rdfs:domain   lom2owl:Relation ;
-        rdfs:range    [ a          owl:DataRange ;
-                        owl:oneOf  [ a          rdf:List ;
-                                     rdf:first  "hasFormat"^^xsd:string ;
-                                     rdf:rest   [ a          rdf:List ;
-                                                  rdf:first  "hasPart"^^xsd:string ;
-                                                  rdf:rest   [ a          rdf:List ;
-                                                               rdf:first  "hasVersion"^^xsd:string ;
-                                                               rdf:rest   [ a          rdf:List ;
-                                                                            rdf:first  "isBasedOn"^^xsd:string ;
-                                                                            rdf:rest   [ a          rdf:List ;
-                                                                                         rdf:first  "isBasisFor"^^xsd:string ;
-                                                                                         rdf:rest   [ a          rdf:List ;
-                                                                                                      rdf:first  "isFormatOf"^^xsd:string ;
-                                                                                                      rdf:rest   [ a          rdf:List ;
-                                                                                                                   rdf:first  "isPartOf"^^xsd:string ;
-                                                                                                                   rdf:rest   [ a          rdf:List ;
-                                                                                                                                rdf:first  "isReferencedBy"^^xsd:string ;
-                                                                                                                                rdf:rest   [ a          rdf:List ;
-                                                                                                                                             rdf:first  "isRequiredBy"^^xsd:string ;
-                                                                                                                                             rdf:rest   [ a          rdf:List ;
-                                                                                                                                                          rdf:first  "isVersionOf"^^xsd:string ;
-                                                                                                                                                          rdf:rest   [ a          rdf:List ;
-                                                                                                                                                                       rdf:first  "references"^^xsd:string ;
-                                                                                                                                                                       rdf:rest   [ a          rdf:List ;
-                                                                                                                                                                                    rdf:first  "requires"^^xsd:string ;
-                                                                                                                                                                                    rdf:rest   ()
-                                                                                                                                                                                  
-                                                                                                                                                                                  ]
-                                                                                                                                                                     ]
-                                                                                                                                                        ]
-                                                                                                                                           ]
-                                                                                                                              ]
-                                                                                                                 ]
-                                                                                                    ]
-                                                                                       ]
-                                                                          ]
-                                                             ]
-                                                ]
-                                   ]
-                      ] .
-
+  rdf:type owl:Class ;
+  rdfs:comment "Description of where a learning object falls within a particular classification system. To define multiple classifications, there may be multiple instances of this category for a learning object."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:classificationPurpose ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "15"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:TaxonPath ;
+      owl:onProperty lom2owl:taxonPath ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "40"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LangString ;
+      owl:onProperty lom2owl:classificationKeyword ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:classificationDescription ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+.
+lom2owl:Contribution
+  rdf:type owl:Class ;
+  rdfs:comment "Those entities (i.e., people, organizations) that have contributed to the state of this learning object during its life cycle (e.g., creation, edits, publication)." ;
+  rdfs:subClassOf owl:Thing ;
+.
+lom2owl:DateTime
+  rdf:type owl:Class ;
+  rdfs:comment "A point in time with accuracy at least as small as one second, as described by IEEE LOM in clause 8 (IEEE 1484.12.1-2002)."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onDataRange xsd:dateTime ;
+      owl:onProperty lom2owl:dateTimeValue ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+.
+lom2owl:Duration
+  rdf:type owl:Class ;
+  rdfs:comment "An interval in time with accuracy at least as small as one second."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onDataRange rdf:XMLLiteral ;
+      owl:onProperty lom2owl:durationDescription ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onDataRange rdf:XMLLiteral ;
+      owl:onProperty lom2owl:durationValue ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+.
+lom2owl:Educational
+  rdf:type owl:Class ;
+  terms:type ""^^rdfs:Literal ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:educationalDifficulty ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:educationalInteractivityLevel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:educationalInteractivityType ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:educationalSemanticDensity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:educationalContext ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:educationalIntendedUserRole ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:educationalLanguage ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LangString ;
+      owl:onProperty lom2owl:description ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LangString ;
+      owl:onProperty lom2owl:educationalTypicalAgeRange ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass lom2owl:Duration ;
+      owl:onProperty lom2owl:educationalTypicalLearningTime ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+.
+lom2owl:Identifier
+  rdf:type owl:Class ;
+  terms:identifier ""^^rdfs:Literal ;
+  rdfs:comment "A globally unique label that identifies either a learning object or a learning object metadata record."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:identifierCatalog ;
+    ] ;
+.
+lom2owl:LangString
+  rdf:type owl:Class ;
+  rdfs:comment "Each of the possible semantically equivalent character strings of a langString."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:hasValue ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+.
+lom2owl:LearningObject
+  rdf:type owl:Class ;
+  terms:format ""^^rdfs:Literal ;
+  terms:language ""^^rdfs:Literal ;
+  terms:publisher ""^^rdfs:Literal ;
+  terms:rights ""^^rdfs:Literal ;
+  rdfs:comment "Learning Object" ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:aggregationLevel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:lifeCycleStatus ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:metaMetadataLanguage ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:structure ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:technicalSize ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:metadataSchema ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:technicalLocation ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Identifier ;
+      owl:onProperty lom2owl:identifier ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Identifier ;
+      owl:onProperty lom2owl:metaMetadataIdentifier ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LangString ;
+      owl:onProperty lom2owl:coverage ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LangString ;
+      owl:onProperty lom2owl:description ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LangString ;
+      owl:onProperty lom2owl:keyword ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:MetaMetadataContribution ;
+      owl:onProperty lom2owl:metaMetadataContribution ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "100"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Educational ;
+      owl:onProperty lom2owl:educational ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "100"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Relation ;
+      owl:onProperty lom2owl:relation ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Annotation ;
+      owl:onProperty lom2owl:annotation ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LifeCycleContribution ;
+      owl:onProperty lom2owl:lifeCycleContribution ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "40"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Classification ;
+      owl:onProperty lom2owl:classification ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "40"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:TechnicalRequirement ;
+      owl:onProperty lom2owl:technicalRequirements ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass lom2owl:Duration ;
+      owl:onProperty lom2owl:technicalDuration ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onDataRange xsd:boolean ;
+      owl:onProperty lom2owl:copyrightAndOtherRestrictions ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onDataRange xsd:boolean ;
+      owl:onProperty lom2owl:cost ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:lifeCycleVersion ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:otherPlatformRequirements ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:technicalInstallationRemarks ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+.
+lom2owl:LifeCycleContribution
+  rdf:type owl:Class ;
+  rdfs:subClassOf lom2owl:Contribution ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:dateTimeDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:dateTimeValue ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:lifeCycleContributionRole ;
+    ] ;
+.
 lom2owl:MetaMetadataContribution
-        a                owl:Class ;
-        rdfs:subClassOf  lom2owl:Contribution ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty      lom2owl:metaMetadataContributionRole
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:dateTimeValue
-                         ] ;
-        rdfs:subClassOf  [ a                owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onProperty   lom2owl:dateTimeDescription
-                         ] .
-
-lom2owl:identifierCatalog
-        a             owl:FunctionalProperty , owl:DatatypeProperty ;
-        rdfs:comment  "This predicate relates a lomIdentifier to the name or designator of the identification or cataloging scheme used for its identification. It is usually a namespace scheme. IEEE LOM element 1.1, 3.1, 7.2.1."@en ;
-        rdfs:domain   lom2owl:Identifier ;
-        rdfs:range    xsd:string .
-
+  rdf:type owl:Class ;
+  rdfs:subClassOf lom2owl:Contribution ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:dateTimeDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:dateTimeValue ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:metaMetadataContributionRole ;
+    ] ;
+.
+lom2owl:Relation
+  rdf:type owl:Class ;
+  rdfs:comment "A concept which defines the relationship between a learning object and other learning objects, if any."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:relationKind ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Identifier ;
+      owl:onProperty lom2owl:identifier ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:LangString ;
+      owl:onProperty lom2owl:relatedResourceDescription ;
+    ] ;
+.
+lom2owl:SingleTechnicalRequirement
+  rdf:type owl:Class ;
+  rdfs:comment "A technical capability necessary for using a learning object."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:orCompositeName ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:orCompositeType ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:orCompositeMaximumVersion ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:orCompositeMinimumVersion ;
+    ] ;
+.
+lom2owl:Taxon
+  rdf:type owl:Class ;
+  rdfs:comment """A particular term within a taxonomy. A taxon is a node that has a defined label or
+term. A taxon may also have an alphanumeric designation or identifier for standardized reference. Either or both the label and the entry may be used to designate a particular taxon. An ordered list of taxons creates a taxonomic path, i.e., \"taxonomic stairway\": this is a path from a more general to more specific entry in a classification."""@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty lom2owl:taxonId ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:taxonEntry ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+.
+lom2owl:TaxonPath
+  rdf:type owl:Class ;
+  rdfs:comment "A taxonomic path in a specific classification system. Each succeeding level is a refinement in the definition of the preceding level. There may be different paths, in the same or different classifications, which describe the same characteristic."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "15"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:Taxon ;
+      owl:onProperty lom2owl:classificationTaxon ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty lom2owl:taxonpathSource ;
+      owl:someValuesFrom rdfs:Literal ;
+    ] ;
+.
+lom2owl:TechnicalRequirement
+  rdf:type owl:Class ;
+  rdfs:comment "The technical capabilities necessary for using a learning object. There can be multiple requirements, in which case all are required, i.e., the logical connector is AND."@en ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxQualifiedCardinality "40"^^xsd:nonNegativeInteger ;
+      owl:onClass lom2owl:SingleTechnicalRequirement ;
+      owl:onProperty lom2owl:isCompositeOf ;
+    ] ;
+.
+lom2owl:VCard
+  rdf:type owl:Class ;
+  rdfs:comment "A vCard is a collection of one or more properties. A property is a uniquely named value. A set of properties can be grouped within a vCard. For example, the properties for a telephone number and comment can be grouped in order to preserve the coupling of the annotation with the telephone number. In addition to property groupings, a vC. versit  is developing a comprehensive family of PDI technologies based on open specifications and interoperability agreements to help meet this technology need." ;
+  rdfs:subClassOf owl:Thing ;
+  ns:FN ""^^rdfs:Literal ;
+  ns:N ""^^rdfs:Literal ;
+  ns:ORG ""^^rdfs:Literal ;
+  ns:email ""^^rdfs:Literal ;
+.
+lom2owl:aggregationLevel
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The functional granularity of this learning object. IEEE LOM element 1.8."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "1" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "2" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "3" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "4" ;
+                      rdf:rest () ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:annotation
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Comments on the educational use of a learning object, containing information on when and by whom the comments were created. This category enables educators to share their assessments of learning objects, suggestions for use, etc. IEEE LOM element 8."@en ;
+  rdfs:range lom2owl:Annotation ;
+.
+lom2owl:annotationDate
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Date that this annotation was created. IEEE LOM element 8.2."@en ;
+  rdfs:domain lom2owl:Annotation ;
+  rdfs:range lom2owl:DateTime ;
+.
+lom2owl:annotationDescription
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:Annotation ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:annotationEntity
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:Thing ;
+  rdfs:comment "Entity (i.e., people, organization) that created this annotation. IEEE LOM element 8.1."@en ;
+  owl:dataPropertyDomain lom2owl:Annotation ;
+  owl:dataPropertyRange xsd:string ;
+.
+lom2owl:classification
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Description of where a learning object falls within a particular classification system. IEEE LOM element 9."@en ;
+  rdfs:range lom2owl:Classification ;
+.
+lom2owl:classificationDescription
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:Classification ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:classificationKeyword
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Keywords and phrases descriptive of the learning object relative to the stated 9.1:Classification.Purpose of this specific classification, such as accessibility, security level, etc., most relevant first. IEEE LOM element 9.4" ;
+  rdfs:domain lom2owl:Classification ;
+.
+lom2owl:classificationPurpose
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The purpose of classifying a learning object. IEEE LOM element 9.1."@en ;
+  rdfs:domain lom2owl:Classification ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "accessibility" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "competency" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "discipline" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "educational level" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "educational objective" ;
+                          rdf:rest [
+                              rdf:type rdf:List ;
+                              rdf:first "idea" ;
+                              rdf:rest [
+                                  rdf:type rdf:List ;
+                                  rdf:first "prerequisite" ;
+                                  rdf:rest [
+                                      rdf:type rdf:List ;
+                                      rdf:first "restrictions" ;
+                                      rdf:rest [
+                                          rdf:type rdf:List ;
+                                          rdf:first "security level" ;
+                                          rdf:rest [
+                                              rdf:type rdf:List ;
+                                              rdf:first "skill level" ;
+                                              rdf:rest () ;
+                                            ] ;
+                                        ] ;
+                                    ] ;
+                                ] ;
+                            ] ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:classificationTaxon
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "A particular term within a taxonomy which serves to classify a learning object. IEEE LOM element 9.2.2."@en ;
+  rdfs:domain lom2owl:TaxonPath ;
+  rdfs:range lom2owl:Taxon ;
+.
+lom2owl:contributionDateTime
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "The date of the contribution. IEEE LOM element 3.2.3."@en ;
+  rdfs:domain lom2owl:Contribution ;
+  rdfs:range lom2owl:DateTime ;
+.
+lom2owl:contributionEntity
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "The identification of and information about entities (i.e., people, organizations) contributing to this learning object. The entities shall be ordered as most relevant first. IEEE LOM element 3.2.2." ;
+  rdfs:domain lom2owl:Contribution ;
+  rdfs:range lom2owl:VCard ;
+.
+lom2owl:copyrightAndOtherRestrictions
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Whether copyright or other restrictions apply to the use of this learning object. IEEE LOM element 6.2."@en ;
+  rdfs:range xsd:boolean ;
+.
+lom2owl:copyrightDescription
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:cost
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Whether use of the learning object requires payment. IEEE LOM element 6.1."@en ;
+  rdfs:range xsd:boolean ;
+.
+lom2owl:coverage
+  rdf:type owl:ObjectProperty ;
+  terms:coverage ""^^rdfs:Literal ;
+  rdfs:comment """The time, culture, geography or region to which this learning object applies.
+The extent or scope of the content of the learning object. Coverage will typically include spatial location (a place name or geographic coordinates), temporal period (a period label, date, or date range) or jurisdiction (such as a named administrative entity). Recommended best practice is to select a value from a controlled vocabulary (for example, the Thesaurus of Geographic Names [TGN]) and that, where appropriate, named places or time periods be used in preference to numeric identifiers such as sets of coordinates or date ranges. IEEE LOM element 1.6."""@en ;
+  rdfs:domain lom2owl:LearningObject ;
+.
 lom2owl:dateTimeDescription
-        a            owl:DatatypeProperty ;
-        rdfs:domain  lom2owl:Contribution ;
-        rdfs:range   rdfs:Literal .
-
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:Contribution ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:dateTimeValue
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Date time value in format: YYYY[-MM[-DD[Thh[:mm[:ss[.s[TZD]]]]]]]"@en ;
+  rdfs:domain lom2owl:DateTime ;
+  rdfs:range xsd:dateTime ;
+.
+lom2owl:description
+  rdf:type owl:ObjectProperty ;
+  terms:description ""^^rdfs:Literal ;
+  rdfs:comment "A textual description of the content of this learning object. IEEE LOM element 1.4."@en ;
+  rdfs:comment "Comments on how this learning object is to be used. IEEE LOM element 5.10" ;
+  rdfs:domain lom2owl:LearningObject ;
+.
+lom2owl:duration
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain lom2owl:Duration ;
+.
+lom2owl:durationDescription
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:Duration ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:durationValue
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:Duration ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:educational
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "This category describes the key educational or pedagogic characteristics of this learning object. IEEE LOM element 5." ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range lom2owl:Educational ;
+.
+lom2owl:educationalContext
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The principal environment within which the learning and use of this learning object is intended to take place. IEEE LOM element 5.6."@en ;
+  rdfs:domain lom2owl:Educational ;
+  rdfs:range rdfs:Literal ;
+  rdfs:range xsd:short ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "higher education" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "other" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "school" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "training" ;
+                      rdf:rest () ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:educationalDifficulty
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "How hard it is to work with or through this learning object for the typical intended target audience. IEEE LOM element 5.8"@en ;
+  rdfs:domain lom2owl:Educational ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "difficult" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "easy" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "medium" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "very difficult" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "very easy" ;
+                          rdf:rest () ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:educationalIntendedUserRole
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Principal user(s) for which this learning object was designed, most dominant first. IEEE LOM element 5.5."@en ;
+  rdfs:domain lom2owl:Educational ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "author" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "learner" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "manager" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "teacher" ;
+                      rdf:rest () ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:educationalInteractivityLevel
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The degree of interactivity characterizing this learning object. Interactivity in this context refers to the degree to which the learner can influence the aspect or behavior of the learning object. IEEE LOM element 5.3." ;
+  rdfs:domain lom2owl:Educational ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "high" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "low" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "medium" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "very high" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "very low" ;
+                          rdf:rest () ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:educationalInteractivityType
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Predominant mode of learning supported by this learning object. IEEE LOM element 5.1."@en ;
+  rdfs:domain lom2owl:Educational ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "active" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "expositive" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "mised" ;
+                  rdf:rest () ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:educationalLanguage
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The primary human language or languages used within this learning object to communicate to the intended user. If the learning object had no lingual content (as in the case of a picture of the Mona Lisa, for example), then the appropriate value for this data element would be \"none\". IEEE LOM element 1.3."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "ba" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "ca" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "es" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "ga" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "none" ;
+                          rdf:rest () ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:educationalSemanticDensity
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The degree of conciseness of a learning object. The semantic density of a learning object may be estimated in terms of its size, span, or --in the case of self-timed resources such as audio or video-- duration. IEEE LOM element 5.4." ;
+  rdfs:domain lom2owl:Educational ;
+  rdfs:range xsd:string ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "high" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "low" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "medium" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "very high" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "very low" ;
+                          rdf:rest () ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "higherEducation" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "other" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "school" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "training" ;
+                      rdf:rest () ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:educationalTypicalAgeRange
+  rdf:type owl:ObjectProperty ;
+  rdf:value ""^^rdfs:Literal ;
+  rdfs:comment "Age of the typical intended user. IEEE LOM element 5.7." ;
+  rdfs:domain lom2owl:Educational ;
+.
+lom2owl:educationalTypicalLearningTime
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain lom2owl:Educational ;
+  rdfs:range lom2owl:Duration ;
+.
+lom2owl:email
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Email as it appears in the vCard" ;
+  rdfs:domain lom2owl:VCard ;
+  rdfs:range xsd:string ;
+.
+lom2owl:hasRelatedResource
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "The target learning object that a relationship references. IEEE LOM element 7.2."@en ;
+  rdfs:domain lom2owl:Relation ;
+  rdfs:range lom2owl:Identifier ;
+.
+lom2owl:hasResourceIdentifier
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "A globally unique label that identifies the target  learning object. IEEE LOM element 7.2.1."@en ;
+  rdfs:range lom2owl:Identifier ;
+.
+lom2owl:hasTechnicalFormat
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Technical datatype(s) of (all the components of) this learning object. This information is used to identify the software needed to access the learning object. IEEE LOM element 4.1."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range xsd:string ;
+.
+lom2owl:hasValue
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "This predicate relates a singleLangString to the character string containing its textual description."@en ;
+  rdfs:range xsd:string ;
+.
+lom2owl:identifier
+  rdf:type owl:InverseFunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "This predicate represents the fact that a learning object has a label that identifies it. IEEE LOM element 1.1."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range lom2owl:Identifier ;
+.
+lom2owl:identifierCatalog
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:comment "This predicate relates a lomIdentifier to the name or designator of the identification or cataloging scheme used for its identification. It is usually a namespace scheme. IEEE LOM element 1.1, 3.1, 7.2.1."@en ;
+  rdfs:domain lom2owl:Identifier ;
+  rdfs:range xsd:string ;
+.
+lom2owl:identifierEntry
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:comment "This predicate relates a lomIdentifier to the value of the identifier within the identification or cataloging scheme that designates or identifies a learning object or a learning object metadata record (a namespace specific string).  IEEE LOM element 1.1, 3.1, 7.2.1."@en ;
+  rdfs:domain lom2owl:Identifier ;
+  rdfs:range xsd:string ;
+.
+lom2owl:includesSingleLangString
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "LangString values may include multiple semantically equivalent character strings, such as translations or alternative descriptions. Each of these is represented by a singleLangString."@en ;
+  rdfs:range lom2owl:LangString ;
+.
+lom2owl:isCompositeOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "When grouping multiple requirements, the composite requirement is satisfied when one of the component requirements is satisfied, i.e., the logical connector is OR. IEEE LOM element 4.4.1."@en ;
+  rdfs:domain lom2owl:TechnicalRequirement ;
+  rdfs:range lom2owl:SingleTechnicalRequirement ;
+.
+lom2owl:keyword
+  rdf:type owl:ObjectProperty ;
+  rdf:value ""^^rdfs:Literal ;
+  rdfs:comment "A keyword or phrase describing the topic of this learning object. This data element should not be used for characteristics that can be described by other data elements. IEEE LOM element 1.5."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+.
+lom2owl:lifeCycleContribution
+  rdf:type owl:ObjectProperty ;
+.
+lom2owl:lifeCycleContributionRole
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Kind of contribution. IEEE LOM element 2.3.1."@en ;
+  rdfs:domain lom2owl:LifeCycleContribution ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "author" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "content provider" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "editor" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "educational validator" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "graphical designer" ;
+                          rdf:rest [
+                              rdf:type rdf:List ;
+                              rdf:first "initiator" ;
+                              rdf:rest [
+                                  rdf:type rdf:List ;
+                                  rdf:first "instructional designer" ;
+                                  rdf:rest [
+                                      rdf:type rdf:List ;
+                                      rdf:first "publisher" ;
+                                      rdf:rest [
+                                          rdf:type rdf:List ;
+                                          rdf:first "script writer" ;
+                                          rdf:rest [
+                                              rdf:type rdf:List ;
+                                              rdf:first "subject matter expert" ;
+                                              rdf:rest [
+                                                  rdf:type rdf:List ;
+                                                  rdf:first "technical implementer" ;
+                                                  rdf:rest [
+                                                      rdf:type rdf:List ;
+                                                      rdf:first "technical validator" ;
+                                                      rdf:rest [
+                                                          rdf:type rdf:List ;
+                                                          rdf:first "terminator" ;
+                                                          rdf:rest [
+                                                              rdf:type rdf:List ;
+                                                              rdf:first "unknown" ;
+                                                              rdf:rest [
+                                                                  rdf:type rdf:List ;
+                                                                  rdf:first "validator" ;
+                                                                  rdf:rest () ;
+                                                                ] ;
+                                                            ] ;
+                                                        ] ;
+                                                    ] ;
+                                                ] ;
+                                            ] ;
+                                        ] ;
+                                    ] ;
+                                ] ;
+                            ] ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:lifeCycleStatus
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The completion status or condition of this learning object. IEEE LOM element 2.2" ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "draft" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "final" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "revised" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "unavalaible" ;
+                      rdf:rest () ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:lifeCycleVersion
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:metaMetadataContribution
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Those entities (i.e., people, organizations) that have contributed to the state of this learning object during its life cycle (e.g.,creation, edits, publication)."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range lom2owl:LifeCycleContribution ;
+.
+lom2owl:metaMetadataContributionRole
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Kind of contribution. IEEE LOM element 3.2.1." ;
+  rdfs:domain lom2owl:MetaMetadataContribution ;
+  rdfs:range xsd:string ;
+.
+lom2owl:metaMetadataIdentifier
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "A globally unique label that identifies this metadata record. IEEE LOM element 3.1." ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range lom2owl:Identifier ;
+.
+lom2owl:metaMetadataLanguage
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Language of this metadata instance. This is the default language for all LangString values in this metadata instance. If a value for this data element is not present in a metadata instance, then there is no default language for LangString values. IEEE LOM element 3.4."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "ba" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "ca" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "es" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "ga" ;
+                      rdf:rest () ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:metadataSchema
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The name and version of the authoritative specification used to create this metadata instance. IEEE LOM element 3.3."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range xsd:string ;
+.
+lom2owl:orCompositeMaximumVersion
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Highest possible version of the required technology to use the learning object. IEEE LOM element 4.4.1.4."@en ;
+  rdfs:domain lom2owl:SingleTechnicalRequirement ;
+  rdfs:range xsd:string ;
+.
+lom2owl:orCompositeMinimumVersion
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Lowest possible version of the required technology to use the learning object. IEEE LOM element 4.4.1.3."@en ;
+  rdfs:domain lom2owl:SingleTechnicalRequirement ;
+  rdfs:range xsd:string ;
+.
+lom2owl:orCompositeName
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Name of the required technology to use a learning object. IEEE LOM element 4.4.1.2."@en ;
+  rdfs:domain lom2owl:SingleTechnicalRequirement ;
+  rdfs:range xsd:string ;
+.
+lom2owl:orCompositeType
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The technology required to use this learning object, e.g., hardware, software, network, etc. IEEE LOM element 4.4.1.1."@en ;
+  rdfs:domain lom2owl:SingleTechnicalRequirement ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "browser" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "operating system" ;
+              rdf:rest () ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:otherPlatformRequirements
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:relatedResourceDescription
+  rdf:type owl:ObjectProperty ;
+  terms:description ""^^rdfs:Literal ;
+  rdfs:domain lom2owl:Relation ;
+  rdfs:range lom2owl:LangString ;
+.
+lom2owl:relation
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relationship between a learning object and other learning objects, if any."@en ;
+  rdfs:range lom2owl:Relation ;
+.
+lom2owl:relationKind
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Nature of the relationship between a learning object and the target learning object, identified by 7.2:Relation.Resource. IEEE LOM element 7.1."@en ;
+  rdfs:domain lom2owl:Relation ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "hasFormat" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "hasPart" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "hasVersion" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "isBasedOn" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "isBasisFor" ;
+                          rdf:rest [
+                              rdf:type rdf:List ;
+                              rdf:first "isFormatOf" ;
+                              rdf:rest [
+                                  rdf:type rdf:List ;
+                                  rdf:first "isPartOf" ;
+                                  rdf:rest [
+                                      rdf:type rdf:List ;
+                                      rdf:first "isReferencedBy" ;
+                                      rdf:rest [
+                                          rdf:type rdf:List ;
+                                          rdf:first "isRequiredBy" ;
+                                          rdf:rest [
+                                              rdf:type rdf:List ;
+                                              rdf:first "isVersionOf" ;
+                                              rdf:rest [
+                                                  rdf:type rdf:List ;
+                                                  rdf:first "references" ;
+                                                  rdf:rest [
+                                                      rdf:type rdf:List ;
+                                                      rdf:first "requires" ;
+                                                      rdf:rest () ;
+                                                    ] ;
+                                                ] ;
+                                            ] ;
+                                        ] ;
+                                    ] ;
+                                ] ;
+                            ] ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:structure
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Underlying organizational structure of this learning object. IEEE LOM element 1.7."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range [
+      rdf:type owl:DataRange ;
+      owl:oneOf [
+          rdf:type rdf:List ;
+          rdf:first "atomic" ;
+          rdf:rest [
+              rdf:type rdf:List ;
+              rdf:first "collection" ;
+              rdf:rest [
+                  rdf:type rdf:List ;
+                  rdf:first "hierarchical" ;
+                  rdf:rest [
+                      rdf:type rdf:List ;
+                      rdf:first "linear" ;
+                      rdf:rest [
+                          rdf:type rdf:List ;
+                          rdf:first "networked" ;
+                          rdf:rest () ;
+                        ] ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+lom2owl:taxonEntry
+  rdf:type owl:DatatypeProperty ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:taxonId
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The identifier of the taxon, such as a number or letter combination provided by the source of the taxonomy. IEEE LOM element 9.2.2.1."@en ;
+  rdfs:domain lom2owl:Taxon ;
+  rdfs:range xsd:string ;
+.
+lom2owl:taxonPath
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "A taxonomic path in a specific classification system according to which a learning object is classified. IEEE LOM element 9.2."@en ;
+  rdfs:domain lom2owl:Classification ;
+  rdfs:range lom2owl:TaxonPath ;
+.
+lom2owl:taxonpathSource
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:TaxonPath ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:technicalDuration
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain lom2owl:Duration ;
+  rdfs:range lom2owl:LearningObject ;
+.
+lom2owl:technicalInstallationRemarks
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range rdfs:Literal ;
+.
+lom2owl:technicalLocation
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "A string that is used to access this learning object. It may be a location  (e.g., Universal Resource Locator), or a method that resolves to a location (e.g., Universal Resource Identifier). The first element of this list shall be the preferable location. IEEE LOM element 4.3."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range xsd:string ;
+.
+lom2owl:technicalRequirements
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "A technical capability necessary for using a learning object. IEEE LOM Element \"4.4. Requirement\"."@en ;
+  rdfs:range lom2owl:TechnicalRequirement ;
+.
+lom2owl:technicalSize
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The size of the digital learning object in bytes (not Mbytes, GB, etc.). The size is represented as a decimal value. This data element shall refer to the actual size of this learning object. If the learning object is compressed, then this data element shall refer to the uncompressed size. IEEE LOM element 4.2."@en ;
+  rdfs:domain lom2owl:LearningObject ;
+  rdfs:range xsd:string ;
+.
+dc:publisher
+  rdf:type owl:AnnotationProperty ;
+.
+terms:coverage
+  rdf:type owl:AnnotationProperty ;
+.
+terms:description
+  rdf:type owl:AnnotationProperty ;
+.
+terms:format
+  rdf:type owl:AnnotationProperty ;
+.
+terms:identifier
+  rdf:type owl:AnnotationProperty ;
+.
+terms:language
+  rdf:type owl:AnnotationProperty ;
+.
+terms:publisher
+  rdf:type owl:AnnotationProperty ;
+.
+terms:rights
+  rdf:type owl:AnnotationProperty ;
+.
+terms:title
+  rdf:type owl:AnnotationProperty ;
+.
+terms:type
+  rdf:type owl:AnnotationProperty ;
+.
+rdf:value
+  rdf:type owl:AnnotationProperty ;
+.
+owl:Thing
+  rdf:type owl:Class ;
+.
+ns:FN
+  rdf:type owl:AnnotationProperty ;
+.
+ns:N
+  rdf:type owl:AnnotationProperty ;
+.
+ns:ORG
+  rdf:type owl:AnnotationProperty ;
+.
+ns:email
+  rdf:type owl:AnnotationProperty ;
+.
